@@ -3,11 +3,12 @@ import javax.swing.Timer;
 import java.awt.event.*;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 //import java.awt.font.GraphicAttribute;
 import java.util.*; 
 import java.awt.Rectangle;
 
-
+//min 28
 public class Gameplay extends JPanel implements KeyListener, ActionListener{
     private boolean play   = false;
     private int score  = 0;
@@ -22,8 +23,11 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
     private int ballXdir  = -1;
     private int ballYdir  = -2;
 
+    private Map map;
 
     public Gameplay(){
+
+        map = new Map(3,7);
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
@@ -35,6 +39,9 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
         // background
         g.setColor(Color.black);
         g.fillRect(1,1, 692, 592);
+
+        //draw map
+        map.draw((Graphics2D)g);
 
         //borders
         g.setColor(Color.green);
@@ -59,6 +66,10 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
         if(play){
             if(new Rectangle(ballposX, ballposY, 20, 20).intersects(new Rectangle(playerX, 550, 100, 8))){
                 ballYdir = -ballYdir;
+            }
+
+            for(int i = 0; i < map.map.length; i++){
+                //stopped at 40:33
             }
 
 
@@ -110,8 +121,6 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
         play = true;
         playerX -= 20;
     }
-    
-
     
     
 }
