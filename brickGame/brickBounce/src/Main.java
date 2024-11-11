@@ -1,6 +1,7 @@
 /*Margo Bonal Java/ Git Practice */
 /* Brick Bounce Tutorial         */
 /* Tutorial: https://youtu.be/K9qMm3JbOH0?si=JpPWC4BX1ml91q_u */
+// *NOTE: stopped @ 24:00
 import javax.swing.JFrame;
 
 public class Main {

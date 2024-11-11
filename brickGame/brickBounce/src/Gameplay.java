@@ -1,4 +1,5 @@
 import javax.swing.JPanel;
+import javax.swing.Timer;
 import java.awt.event.*;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -25,8 +26,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
-        //timer = new Timer(delay, this);
-        //timer.start();
+        timer = new Timer(delay, this);
+        timer.start();
     }
 
     public void paint(Graphics g){
@@ -46,11 +47,15 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
 
         //ball
         g.setColor(Color.ORANGE);
-        g.fillRect(ballposX,ballposY, 20, 20);
+        g.fillOval(ballposX,ballposY, 20, 20);
+        g.dispose();
     }
 
 
     public void actionPerformed(ActionEvent e){
+        timer.start();
+        repaint();
+
         
     }
 
