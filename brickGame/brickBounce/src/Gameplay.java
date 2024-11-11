@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 //import java.awt.font.GraphicAttribute;
 import java.util.*; 
+import java.awt.Rectangle;
 
 
 public class Gameplay extends JPanel implements KeyListener, ActionListener{
@@ -54,6 +55,27 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
 
     public void actionPerformed(ActionEvent e){
         timer.start();
+
+        if(play){
+            if(new Rectangle(ballposX, ballposY, 20, 20).intersects(new Rectangle(playerX, 550, 100, 8))){
+                ballYdir = -ballYdir;
+            }
+
+
+           ballposX += ballXdir;
+           ballposY += ballYdir;
+           
+           if(ballposX < 0){
+              ballXdir = -ballXdir;   
+           }
+           if(ballposY < 0){
+             ballYdir = -ballYdir;
+           }
+           if(ballposX > 670){
+             ballXdir = -ballXdir;   
+            }
+        }
+
         repaint();
 
         
