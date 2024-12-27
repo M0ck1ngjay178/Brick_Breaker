@@ -1,6 +1,7 @@
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import java.awt.event.*;
+import java.awt.Font;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -48,6 +49,11 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
         g.fillRect(0,0, 3, 592);
         g.fillRect(0,0, 692, 3);
         g.fillRect(680,0, 3, 592); //moved into frame reduced 692 to 680
+        
+        //scores
+        g.setColor(Color.white);
+        g.setFont(new Font("Serif", Font.BOLD, 25));
+        g.drawString(""+score, 590, 30);
 
         //base
         g.setColor(Color.CYAN);
