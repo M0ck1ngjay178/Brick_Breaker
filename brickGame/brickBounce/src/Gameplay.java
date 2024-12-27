@@ -1,5 +1,7 @@
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+import java.awt.Image;
 import java.awt.event.*;
 import java.awt.Font;
 import java.awt.Color;
@@ -25,6 +27,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
     private int ballYdir  = -2;
 
     private Map map;
+    private Image background;
 
     public Gameplay(){
 
@@ -34,18 +37,25 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
         setFocusTraversalKeysEnabled(false);
         timer = new Timer(delay, this);
         timer.start();
+
+        // Load the background image (replace with actual path)
+        background = new ImageIcon("img/space.png").getImage();
+
+
     }
 
     public void paint(Graphics g){
         // background
-        g.setColor(Color.black);
-        g.fillRect(1,1, 692, 592);
+        //g.setColor(Color.black);
+        //g.fillRect(1,1, 692, 592);
+        // Draw background image
+        g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
 
         //draw map
         map.draw((Graphics2D)g);
 
         //borders
-        g.setColor(Color.green);
+        g.setColor(Color.blue);
         g.fillRect(0,0, 3, 592);
         g.fillRect(0,0, 692, 3);
         g.fillRect(680,0, 3, 592); //moved into frame reduced 692 to 680
