@@ -1,4 +1,4 @@
-/*Margo Bonal Java/ Git Practice */
+/*Margo B. Java/ Git Practice */
 /* Brick Bounce Tutorial         */
 /* Tutorial: https://youtu.be/K9qMm3JbOH0?si=JpPWC4BX1ml91q_u */
 // *NOTE: completed!!
