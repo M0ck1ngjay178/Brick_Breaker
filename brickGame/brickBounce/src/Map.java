@@ -8,6 +8,10 @@ public class Map {
     public int brickWidth;
     public int brickHeight;
 
+    // Array of rainbow colors
+    private Color[] rainbowColors = {
+        Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.CYAN, Color.BLUE, Color.MAGENTA
+    };
 
     public Map(int row, int col){
        map = new int[row][col];
@@ -28,7 +32,10 @@ public class Map {
             for(int j =0; j< map[0].length; j++)
             {
                 if(map[i][j] > 0){
-                    g.setColor(Color.WHITE);
+                    // Use rainbow color cycle
+                    Color brickColor = rainbowColors[(i * map[0].length + j) % rainbowColors.length];
+                    g.setColor(brickColor);
+                    //g.setColor(Color.WHITE);
                     g.fillRect(j* brickWidth + 80, i* brickHeight + 50, brickWidth, brickHeight);
 
                     g.setStroke(new BasicStroke(3));
@@ -44,8 +51,5 @@ public class Map {
         map[row][col] = value;
         
     }
-
-
-
 
 }
