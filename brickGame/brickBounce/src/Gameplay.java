@@ -6,7 +6,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 //import java.awt.font.GraphicAttribute;
-import java.util.*; 
+//import java.util.*; 
 import java.awt.Rectangle;
 
 //min 28
@@ -63,6 +63,21 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
         g.setColor(Color.ORANGE);
         g.fillOval(ballposX,ballposY, 20, 20);
 
+        //Win
+        if(totalBricks <=0){
+            play = false;
+            ballXdir =0;
+            ballYdir =0;
+            g.setColor(Color.green);
+            g.setFont(new Font("serif", Font.BOLD, 30));
+            g.drawString("You WON!! ",260,300);
+
+            g.setFont(new Font("serif", Font.BOLD, 20));
+            g.drawString("Press ENTER to Restart",230,350);
+
+        }
+
+        //Game Over
         if(ballposY > 570){
             play = false;
             ballXdir =0;
@@ -150,16 +165,34 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
             }else{
                 moveRight();
             }
-        }
+        }//end if
         if(e.getKeyCode() == KeyEvent.VK_LEFT){
             if(playerX < 10){
                 playerX = 10;
             }else{
                 moveLeft();
-            }
+            }//end else
             
-        }
-    }
+        }//end if
+        //Reset Game and Map upon Game Over
+         if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            if(!play){
+                play = true;
+                ballposX = 120;
+                ballposY = 350;
+                ballXdir =-1;
+                ballYdir = -2;
+                playerX = 310;
+                score =0;
+                totalBricks = 21;
+                map = new Map(3, 7);
+
+                repaint();
+            }
+         }
+
+
+    }//end key pressed
 
     public void moveRight(){
         play = true;
